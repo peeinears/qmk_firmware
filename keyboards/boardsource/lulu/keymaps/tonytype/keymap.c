@@ -5,12 +5,14 @@
 #define _LAYER1 1
 #define _LAYER2 2
 #define _LAYER3 3
+#define _LAYER4 4
 
 enum custom_keycodes {
     LAYER0 = SAFE_RANGE,
     LAYER1,
     LAYER2,
     LAYER3,
+    LAYER4,
 };
 
  const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -25,7 +27,7 @@ enum custom_keycodes {
  * |------+------+------+------+------+------| MO(3) |    | TG(2) |------+------+------+------+------+------|
  * | LSFT |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | RSFT |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LESC | LALT | LGUI | / LSFT  /       \ BSPC \  | SPAC |   -  |   _  |
+ *                   | MO(4)| LALT | LGUI | / LSFT  /       \ BSPC \  | SPAC |   -  |   _  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -35,7 +37,7 @@ enum custom_keycodes {
          KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,          KC_EQL,
          KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    LT(1,KC_SCLN), KC_QUOT,
   LSFT_T(KC_ESC),  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   MO(3),   TG(2),   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSFT_T(KC_ENT),
-                           KC_ESC,    KC_LALT, KC_LGUI, KC_LSFT, KC_BSPC, KC_SPC, KC_MINS, KC_UNDS
+                           MO(4),    KC_LALT, KC_LGUI, KC_LSFT, KC_BSPC, KC_SPC, KC_MINS, KC_UNDS
 ),
 
 /* SYMBOLS
@@ -90,7 +92,17 @@ enum custom_keycodes {
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,                   _______, KC_BRMD, KC_BRMU, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,                   KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, RGB_MODE_REVERSE, RGB_VAD, RGB_VAI, RGB_MODE_FORWARD, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_VAD, RGB_VAI, _______, _______, _______,
+                        _______, _______, _______, _______,           _______, _______, _______, _______
+),
+
+/* RGB */
+
+ [_LAYER4] = LAYOUT(
+  _______, _______, _______, _______, _______, _______,                   _______,  _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,                   RGB_SAD, RGB_RMOD, RGB_MOD, RGB_SAI, _______, _______,
+  _______, _______, _______, _______, _______, _______,                   RGB_HUD,  RGB_VAD, RGB_VAI, RGB_HUI, RGB_TOG, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______,  RGB_SPD, RGB_SPI, _______, _______, _______,
                         _______, _______, _______, _______,           _______, _______, _______, _______
 )
 
